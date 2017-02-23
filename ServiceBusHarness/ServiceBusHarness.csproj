@@ -48,8 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChannelProviders\StartServiceChannelProvider.cs" />
+    <Compile Include="ChannelProviders\MessageReceivedChannelProvider.cs" />
+    <Compile Include="Handlers\MessageReceivedServiceHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Handlers\StartServiceHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

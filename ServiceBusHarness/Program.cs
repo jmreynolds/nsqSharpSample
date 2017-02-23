@@ -1,5 +1,5 @@
-﻿using Core.Handlers.MessageReceived;
-using Core.Nsq;
+﻿using Core.Nsq;
+using NsqdPublisher.ChannelProviders;
 
 namespace NsqdPublisher
 {
@@ -8,8 +8,8 @@ namespace NsqdPublisher
         static void Main(string[] args)
         {
             var channelProviders = new ChannelProviderBase[] {
-                new ChannelProvider(),
-                new Core.Handlers.StartService.ChannelProvider() };
+                new MessageReceivedChannelProvider(),
+                new StartServiceChannelProvider() };
             MothershipBus.Start(new CompositeChannelProvider(channelProviders));
         }
     }

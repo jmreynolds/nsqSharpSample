@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Core.Handlers.MessageReceived;
-using Core.Handlers.StartService;
+using Core.Messages;
 using NsqSharp.Bus.Configuration.Providers;
 
 namespace Core.Nsq
@@ -24,9 +23,9 @@ namespace Core.Nsq
         public Topics()
         {
             _typeTopics = new Dictionary<Type, string>();
-            Add<StartServiceEvent>(nameof(StartServiceEvent));
+            Add<StartService>(nameof(StartService));
             Add<AuditMessageInformation>(nameof(AuditMessageInformation));
-            Add<MessageReceivedEvent>(nameof(MessageReceivedEvent));
+            Add<MessageReceived>(nameof(MessageReceived));
         }
         public string GetTopic(Type messageType)
         {

@@ -51,8 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handlers\MessageReceivedUiHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ChannelProviders\MessageReceivedChannelProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

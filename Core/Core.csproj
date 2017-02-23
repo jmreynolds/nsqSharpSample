@@ -50,12 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuditMessageInformation.cs" />
-    <Compile Include="Handlers\MessageReceived\ChannelProvider.cs" />
-    <Compile Include="Handlers\MessageReceived\MessageReceivedEvent.cs" />
-    <Compile Include="Handlers\MessageReceived\MessageReceivedEventHandler.cs" />
-    <Compile Include="Handlers\StartService\ChannelProvider.cs" />
-    <Compile Include="Handlers\StartService\StartServiceEvent.cs" />
-    <Compile Include="Handlers\StartService\StartServiceEventHandler.cs" />
+    <Compile Include="Messages\MessageReceived.cs" />
+    <Compile Include="Messages\StartService.cs" />
     <Compile Include="IoC\ObjectFactory.cs" />
     <Compile Include="Nsq\ChannelProviderBase.cs" />
     <Compile Include="Nsq\CompositeChannelProvider.cs" />

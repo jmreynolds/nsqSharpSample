@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Core.Handlers.MessageReceived;
-using Core.Handlers.StartService;
 using Core.IoC;
+using Core.Messages;
 using Core.Nsq;
 using NsqSharp.Bus;
 using NsqSharp.Bus.Configuration;
+using TestPublisher.ChannelProviders;
 
 namespace TestPublisher
 {
@@ -16,7 +16,7 @@ namespace TestPublisher
             try
             {
                 var busConfig = new MothershipBusConfig();
-                var config = busConfig.GetBusConfiguration();
+                var config = busConfig.GetBusConfiguration(new MessageReceivedChannelProvider());
                 Task.Factory.StartNew(()=> BusService.Start(config));
                 var bus = ObjectFactory.Container.TryGetInstance<IBus>();
                 var busCounter = 0;
@@ -26,12 +26,12 @@ namespace TestPublisher
                     bus = ObjectFactory.Container.TryGetInstance<IBus>();
                     busCounter++;
                 }
-                bus.Send(new StartServiceEvent());
+                bus.Send(new StartService());
                 Console.WriteLine("Enter your message (blank line to quit):");
                 var line = Console.ReadLine();
                 while (!string.IsNullOrEmpty(line))
                 {
-                    var foo = new MessageReceivedEvent {Text = line};
+                    var foo = new MessageReceived {Text = line};
                     bus.Send(foo);
                     line = Console.ReadLine();
                 }
@@ -58,7 +58,7 @@ namespace TestPublisher
                 {
                     var line = Console.ReadLine();
                     if (!string.IsNullOrEmpty(line))
-                        bus.Send(new MessageReceivedEvent { Text = line });
+                        bus.Send(new MessageReceived { Text = line });
                 }
             });
         }
