@@ -33,9 +33,8 @@ namespace Core.Nsq
             {
                 // failed audit
 
-                string logEntry = string.Format("id: {0} action:{1} reason:{2} topic:{3} channel:{4} msg:{5} ex:{6}",
-                     failedInfo.Message.Id, failedInfo.FailedAction, failedInfo.FailedReason, failedInfo.Topic, failedInfo.Channel,
-                     Encoding.UTF8.GetString(failedInfo.Message.Body), failedInfo.Exception);
+                string logEntry =
+                    $"id: {failedInfo.Message.Id} action:{failedInfo.FailedAction} reason:{failedInfo.FailedReason} topic:{failedInfo.Topic} channel:{failedInfo.Channel} msg:{Encoding.UTF8.GetString(failedInfo.Message.Body)} ex:{failedInfo.Exception}";
 
                 if (failedInfo.FailedAction == FailedMessageQueueAction.Requeue)
                 {
@@ -50,7 +49,7 @@ namespace Core.Nsq
 
         private static AuditMessageInformation Convert(IMessageInformation info)
         {
-            return new AuditMessageInformation()
+            return new AuditMessageInformation
             {
                 UniqueIdentifier = info.UniqueIdentifier,
                 Topic = info.Topic,
@@ -70,7 +69,7 @@ namespace Core.Nsq
 
         private static AuditMessageInformation Convert(IFailedMessageInformation info)
         {
-            return new AuditMessageInformation()
+            return new AuditMessageInformation
             {
                 UniqueIdentifier = info.UniqueIdentifier,
                 Topic = info.Topic,
@@ -87,7 +86,7 @@ namespace Core.Nsq
                 Success = false,
                 FailedAction = info.FailedAction.ToString(),
                 FailedReason = info.FailedReason.ToString(),
-                FailedException = info.Exception != null ? info.Exception.ToString() : null
+                FailedException = info.Exception?.ToString()
             };
         }
 

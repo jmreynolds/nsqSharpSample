@@ -17,7 +17,21 @@ namespace Core.Nsq
         {
             if (channelProvider == null)
                 throw new ArgumentNullException(nameof(channelProvider));
+            var busConfig = new MothershipBusConfig();
+            var config = busConfig.GetBusConfiguration(channelProvider, busStateChangedHandler, topicProvider);
+            BusService.Start(config);
+        }
+    }
 
+    public class MothershipBusConfig
+    {
+        public BusConfiguration GetBusConfiguration(
+            IHandlerTypeToChannelProvider channelProvider = null, 
+            IBusStateChangedHandler busStateChangedHandler = null, 
+            IMessageTypeToTopicProvider topicProvider = null)
+        {
+            if (channelProvider == null)
+                channelProvider = new CompositeChannelProvider(new ChannelProviderBase[]{});
             var config = new BusConfiguration(
                 new StructureMapObjectBuilder(ObjectFactory.Container),
                 new NewtonsoftJsonSerializer(typeof(JsonConvert).Assembly),
@@ -25,19 +39,17 @@ namespace Core.Nsq
                 topicProvider ?? new TopicProvider(),
                 channelProvider,
                 defaultThreadsPerHandler: 8,
-                defaultNsqLookupdHttpEndpoints: new[] { "127.0.0.1:4161" },
+                defaultNsqLookupdHttpEndpoints: new[] {"127.0.0.1:4161"},
                 busStateChangedHandler: busStateChangedHandler,
                 preCreateTopicsAndChannels: true,
                 nsqConfig:
-                    new NsqSharp.Config
-                    {
-                        BackoffStrategy = new FullJitterStrategy(),
-                        //MaxRequeueDelay = TimeSpan.FromSeconds(0.1),
-                        //MaxBackoffDuration = TimeSpan.FromSeconds(0.2)
-                    }
-            );
-
-            BusService.Start(config);
+                new Config
+                {
+                    BackoffStrategy = new FullJitterStrategy()
+                    //MaxRequeueDelay = TimeSpan.FromSeconds(0.1),
+                    //MaxBackoffDuration = TimeSpan.FromSeconds(0.2)
+                });
+            return config;
         }
     }
 }

@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Threading;
 using StructureMap;
-using StructureMap.Graph;
 
 namespace Core.IoC
 {
     public static class ObjectFactory
     {
-        private static readonly Lazy<Container> _containerBuilder =
+        private static readonly Lazy<Container> ContainerBuilder =
                     new Lazy<Container>(CreateDefaultContainer, LazyThreadSafetyMode.ExecutionAndPublication);
 
-        public static IContainer Container => _containerBuilder.Value;
+        public static IContainer Container => ContainerBuilder.Value;
 
         private static Container CreateDefaultContainer()
         {

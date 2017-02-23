@@ -49,8 +49,7 @@ namespace Core.Nsq
 
             if (dupes.Count != 0)
             {
-                throw new Exception(string.Format("Duplicate topic name(s): {0}",
-                    string.Join(", ", dupes)));
+                throw new Exception($"Duplicate topic name(s): {string.Join(", ", dupes)}");
             }
 
             // Check for missed types
@@ -66,8 +65,7 @@ namespace Core.Nsq
 
             if (missingTypes.Count != 0)
             {
-                throw new Exception(string.Format("Type(s) missing topic: {0}",
-                    string.Join(", ", missingTypes.Select(p => p.Name))));
+                throw new Exception($"Type(s) missing topic: {string.Join(", ", missingTypes.Select(p => p.Name))}");
             }
         }
     }
