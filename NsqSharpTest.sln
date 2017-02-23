@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26206.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{FFFEC863-2929-4E0C-8EF3-CBD55F78CDE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBusHarness", "ServiceBusHarness\ServiceBusHarness.csproj", "{97C842EC-88C9-412D-AD45-D414E648466A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPublisher", "TestPublisher\TestPublisher.csproj", "{6850EBF1-DF10-4D84-9AEC-FFDD39818895}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFFEC863-2929-4E0C-8EF3-CBD55F78CDE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFFEC863-2929-4E0C-8EF3-CBD55F78CDE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFFEC863-2929-4E0C-8EF3-CBD55F78CDE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFFEC863-2929-4E0C-8EF3-CBD55F78CDE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97C842EC-88C9-412D-AD45-D414E648466A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97C842EC-88C9-412D-AD45-D414E648466A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97C842EC-88C9-412D-AD45-D414E648466A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97C842EC-88C9-412D-AD45-D414E648466A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6850EBF1-DF10-4D84-9AEC-FFDD39818895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6850EBF1-DF10-4D84-9AEC-FFDD39818895}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6850EBF1-DF10-4D84-9AEC-FFDD39818895}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6850EBF1-DF10-4D84-9AEC-FFDD39818895}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
